@@ -14,11 +14,23 @@ function setupOffer() {
   const selected = Object.hasOwn(offers, offer) ? offer : 'price';
   const title = document.getElementById('hero-title');
   const [lead, promise] = offers[selected];
-  const emphasis = document.createElement('em');
-  emphasis.textContent = selected === 'price' ? 'от ' + money(quote({product:0,color:1,quantity:1000,format:rates[0].format,inks:1,effect:1}).unit) : promise;
-  title.replaceChildren(document.createTextNode(lead), document.createElement('br'), emphasis);
   const example = quote({product:0,color:1,quantity:1000,format:rates[0].format,inks:1,effect:1});
-  $('hero-price').textContent = money(example.unit);
+  const emphasis = document.createElement('em');
+  const exampleUnit = document.querySelector('.hero-example-unit');
+  const examplePrice = exampleUnit.querySelector('strong');
+  examplePrice.removeAttribute('id');
+  exampleUnit.hidden = selected === 'price';
+  if (selected === 'price') {
+    const price = document.createElement('span');
+    price.id = 'hero-price';
+    price.textContent = money(example.unit);
+    emphasis.append(document.createTextNode('от '), price);
+  } else {
+    emphasis.textContent = promise;
+    examplePrice.id = 'hero-price';
+    examplePrice.textContent = money(example.unit);
+  }
+  title.replaceChildren(document.createTextNode(lead), document.createElement('br'), emphasis);
   $('hero-total').textContent = money(example.total);
   document.title = title.textContent + ' — PNHD';
 }

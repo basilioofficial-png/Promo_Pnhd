@@ -106,6 +106,13 @@ const server = http.createServer(async (req, res) => {
       assert((await page.locator('h1').textContent()).includes(heading));
       assert((await page.locator('#hero-description').textContent()).includes('1000 шт.'));
       assert.equal(await page.evaluate(()=>quote(state).total),464400);
+      assert.equal(await page.locator('#hero-price').count(),1);
+      assert(await page.locator('#hero-price').isVisible());
+      for(const width of [320,414,760,1024,1440]) {
+        await page.setViewportSize({width,height:900});
+        assert(await page.locator('#hero').evaluate(e=>e.scrollWidth<=e.clientWidth),`offer ${offer} overflows at ${width}`);
+        assert(await page.locator('.hero-primary').isVisible());
+      }
     }
     assert.deepEqual(errors,[]);
     console.log('PASS: all 13 size ranges, per-size stock, total distribution and limits, size validation, per-model selections, color pricing, exported sizes, 4 layouts and 5 offers; no JS errors.');
