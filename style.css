@@ -19,3 +19,33 @@
 #artwork-apply{width:100%;justify-content:center;margin:15px 0}
 #artwork-apply:disabled{opacity:.5;cursor:not-allowed}
 #order-summary{white-space:pre-line}
+
+/* A concrete offer and its conditions are visible before the calculator. */
+.hero{margin:0;padding:54px 5% 58px;grid-template-columns:1.3fr 1fr;gap:60px;min-height:0;background:#161616;color:#fff}
+.hero .eyebrow{color:#c9c9c3;font-size:10px;line-height:1.6}
+.hero h1{font-size:clamp(38px,4.6vw,72px);line-height:1.02;letter-spacing:-2px;margin:20px 0 24px;text-transform:none;overflow-wrap:break-word}
+.hero h1 em{color:#fff900}
+.hero .intro{font-size:15px;line-height:1.6;color:#d0d0ca;margin:0 0 22px;max-width:690px}
+.hero-offer{border-top:1px solid #393939;border-bottom:1px solid #393939;padding:20px 0 24px}
+.hero-price-label{font-size:12px;color:#b7b7b0;display:block}
+#hero-price{display:block;color:#fff900;font-size:clamp(42px,4.5vw,64px);line-height:1.15;font-weight:900;letter-spacing:-2px}
+.hero-offer>small{display:block;font-size:12px;color:#d0d0ca}
+.hero-terms{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px;margin:24px 0 0;font-size:12px;line-height:1.7}
+.hero-terms dt{color:#aaa;margin-bottom:3px}
+.hero-terms dd{margin:0;color:#fff}
+.hero-action{display:flex;align-items:center;gap:24px;margin-top:24px}
+.hero .hero-action .button{background:#fff900;color:#161616;font-size:13px;font-weight:700;border-radius:40px;margin:0;max-width:none;justify-content:center;white-space:nowrap;min-height:54px;padding:18px 28px}
+.hero-action>p{font-size:11px;line-height:1.7;color:#b9b9b3;margin:0}
+.hero .hero-art{min-height:450px;padding:30px;align-items:center;justify-content:center;gap:14px;border-radius:22px;background:#282828;color:#666;align-self:stretch}
+.hero-art>span{font-size:11px;line-height:1.5;text-align:center;color:#8c8c85}
+.sizes-help{font-size:11px;line-height:1.7;color:#777970;margin:12px 0}
+.size-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 10px;margin-top:16px}
+.size-cell{min-width:0;border:1px solid var(--line);padding:10px 8px;text-align:center}
+.size-cell label{font-size:12px;font-weight:600;margin:0 0 8px}
+.size-cell input{min-width:0;padding:10px 3px;text-align:center;font-size:14px;background:#fff}
+.size-cell small{display:block;margin-top:6px;font-size:9px;line-height:1.4;white-space:normal}
+.size-cell input[aria-invalid=true]{border-color:#c83920;background:#fff3f0}
+.presets button:disabled,.quantity-row button:disabled{opacity:.3;cursor:not-allowed}
+@media(max-width:1050px){.hero{gap:30px;grid-template-columns:1.2fr 1fr;padding-top:40px}.hero-action{flex-direction:column;align-items:stretch;gap:15px}.hero .hero-art{min-height:400px}.size-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding:32px 5% 35px}.hero h1{font-size:42px;letter-spacing:-1.4px;line-height:1.06;margin:18px 0 22px}.hero .intro{font-size:13px}.hero-terms{gap:18px;font-size:11px}.hero .hero-art{min-height:230px;max-height:300px}.hero-action>p{font-size:11px}.size-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:380px){.hero h1{font-size:36px}.hero-terms{grid-template-columns:1fr}.size-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
