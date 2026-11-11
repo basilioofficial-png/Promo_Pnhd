@@ -14,16 +14,18 @@ function setupOffer() {
   const selected = Object.hasOwn(offers, offer) ? offer : 'price';
   const title = document.getElementById('hero-title');
   const [lead, promise] = offers[selected];
-  const example = quote({product:0,color:1,quantity:1000,format:rates[0].format,inks:1,effect:1});
+  const promo = quote({product:0,color:1,quantity:1000,format:rates[0].format,inks:1,effect:1});
+  const example = quote({product:0,color:1,quantity:100,format:rates[0].format,inks:1,effect:1});
   const emphasis = document.createElement('em');
   const exampleUnit = document.querySelector('.hero-example-unit');
   const examplePrice = exampleUnit.querySelector('strong');
   examplePrice.removeAttribute('id');
-  exampleUnit.hidden = selected === 'price';
+  exampleUnit.hidden = false;
+  examplePrice.textContent = money(example.unit);
   if (selected === 'price') {
     const price = document.createElement('span');
     price.id = 'hero-price';
-    price.textContent = money(example.unit);
+    price.textContent = money(promo.unit);
     emphasis.append(document.createTextNode('от '), price);
   } else {
     emphasis.textContent = promise;
